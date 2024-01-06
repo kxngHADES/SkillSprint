@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SkillSprint.Modals.Employees.EmployeeLogin"         
+             BackgroundColor="#3C4142">
+
+    <ScrollView VerticalOptions="Center">
+        <StackLayout Padding="20">
+            <Image Source="User.png" HorizontalOptions="CenterAndExpand" HeightRequest="120" Aspect="AspectFit"/>
+
+            <Frame BorderColor="Black" BackgroundColor="Transparent" Margin="0,10,0,0" Padding="25,0,25,0" CornerRadius="50">
+                <Entry Placeholder="Email"
+                   Keyboard="Email"
+                   FontSize="18"
+                   TextColor="Black"
+                   HeightRequest="40"
+                   x:Name="txtEmail"/>
+            </Frame>
+
+            <Frame BorderColor="Black" BackgroundColor="Transparent" Margin="0,0,0,10" Padding="25,0,25,0" CornerRadius="50">
+                <Entry Placeholder="Password"
+                   IsPassword="True"
+                   FontSize="18"
+                   TextColor="Black"
+                   HeightRequest="40"
+                   x:Name="txtPassword"/>
+            </Frame>
+
+            <Button Text="Login"
+                x:Name="btnELog"
+                FontSize="18"
+                TextColor="White"
+                BackgroundColor="Blue"
+                CornerRadius="8"
+                HeightRequest="40"
+                Margin="0,10,0,0"
+                Clicked="OnLoginClicked"/>
+
+            <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,20,0,0">
+                <Label Text="Don't have an account?"
+                   FontSize="16"
+                   TextColor="White"/>
+                <Button Text="Register"
+                    x:Name="btnEReg"
+                    FontSize="16"
+                    TextColor="Blue"
+                    BackgroundColor="Transparent"
+                    BorderWidth="2"
+                    CornerRadius="30"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

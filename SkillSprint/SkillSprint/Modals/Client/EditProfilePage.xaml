@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SkillSprint.Modals.Client.EditProfilePage">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" BackgroundColor="#F4F4F4">
+            <Label Text="Edit Profile"
+                   FontSize="25"
+                   TextColor="#333333"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   Margin="0,20,0,20"/>
+
+            <StackLayout>
+                <!-- Entry fields for editing -->
+                <Entry Text="{Binding FirstName}" Placeholder="First Name" FontSize="16" Margin="0,0,0,5"/>
+                <Entry Text="{Binding LastName}" Placeholder="Last Name" FontSize="16" Margin="0,0,0,5"/>
+                <Entry Text="{Binding Email}" Placeholder="Email" FontSize="16" Margin="0,0,0,5"/>
+                <Entry Text="{Binding PhoneNumber}" Placeholder="Phone Number" FontSize="16" Margin="0,0,0,5"/>
+
+                <!-- New Password fields -->
+                <Entry Text="{Binding CurrentPassword}" Placeholder="Current Password" IsPassword="True" FontSize="16" Margin="0,0,0,5"/>
+                <Entry Text="{Binding NewPassword}" Placeholder="New Password" IsPassword="True" FontSize="16" Margin="0,0,0,5"/>
+                <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm New Password" IsPassword="True" FontSize="16" Margin="0,0,0,5"/>
+
+                <!-- Save button to save changes -->
+                <Button Text="Save Changes"
+                        BackgroundColor="#9600FF"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Clicked="OnSaveClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

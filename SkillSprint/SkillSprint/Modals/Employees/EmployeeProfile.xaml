@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SkillSprint.Modals.Employees.EmployeeProfile"
+             BackgroundColor="#3C4142">
+
+    <ScrollView>
+        <StackLayout Padding="20">
+
+            <Image Source="{Binding EmployeeProfilePicture}" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+            <Button Text="Change Profile Picture" Clicked="OnChangeProfilePictureClicked" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0,10,0,20"/>
+
+            <Entry 
+                x:Name="txtFirstName"
+                Placeholder="First Name" 
+                Margin="0,5,0,0" 
+                PlaceholderColor="Black"
+                Text="{Binding Employee.FirstName}"/>
+
+            <Entry 
+                x:Name="txtLastName"
+                Placeholder="Last Name" 
+                Margin="0,5,0,0" 
+                PlaceholderColor="Black"
+                Text="{Binding Employee.LastName}"/>
+
+            <Entry 
+                x:Name="txtEmail"
+                Placeholder="Email" 
+                Margin="0,5,0,0" 
+                PlaceholderColor="Black"
+                Text="{Binding Employee.Email}"/>
+
+            <Entry 
+                x:Name="txtPhoneNumber"
+                Placeholder="Phone Number" 
+                Margin="0,5,0,0" 
+                PlaceholderColor="Black"
+                Text="{Binding Employee.PhoneNumber}"/>
+
+            <Entry 
+                x:Name="txtService"
+                Placeholder="Service" 
+                Margin="0,5,0,0" 
+                PlaceholderColor="Black"
+                Text="{Binding Employee.Service}"/>
+
+            <Entry 
+                x:Name="txtPrice"
+                Placeholder="Price" 
+                Margin="0,5,0,0" 
+                PlaceholderColor="Black"
+                Text="{Binding Employee.Price, StringFormat='{0:C}'}"/>
+            <!-- Assuming Price is a decimal -->
+
+            <!-- Add more entry fields for other employee information -->
+
+            <Button 
+                Text="Save Changes" 
+                TextColor="Blue"
+                BorderWidth="2"
+                BorderColor="Blue"
+                BackgroundColor="White"  
+                Margin="0,20,0,0" 
+                CornerRadius="50"
+                Clicked="OnSaveChangesClicked"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

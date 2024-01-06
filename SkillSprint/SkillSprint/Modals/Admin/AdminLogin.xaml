@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SkillSprint.Modals.Admin.AdminLogin"
+             BackgroundColor="#3C4142">
+
+    <StackLayout Padding="20" Spacing="20" VerticalOptions="CenterAndExpand">
+        <Image Source="profile.png" HeightRequest="120" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+        
+        <Entry Placeholder="Admin ID" FontSize="18" TextColor="White" BackgroundColor="#2c3e50" HeightRequest="40" x:Name="adminIdEntry"/>
+        <Entry Placeholder="Password" FontSize="18" TextColor="White" BackgroundColor="#2c3e50" IsPassword="True" HeightRequest="40" x:Name="passwordEntry"/>
+
+        <Button Text="Login"
+                FontSize="18"
+                TextColor="White"
+                BackgroundColor="#27ae60"
+                CornerRadius="10"
+                HeightRequest="50"
+                Command="{Binding LoginCommand}"/>
+    </StackLayout>
+</ContentPage>

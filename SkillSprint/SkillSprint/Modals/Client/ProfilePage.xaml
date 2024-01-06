@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SkillSprint.Modals.Client.ProfilePage">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" BackgroundColor="#3C4142">
+            <Label Text="My Profile"
+                   FontSize="25"
+                   TextColor="#333333"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   Margin="0,20,0,20"/>
+
+            <StackLayout>
+                <!-- Display client details -->
+                <Label Text="{Binding FirstName}" FontSize="20" TextColor="#333333" FontAttributes="Bold"/>
+                <Label Text="{Binding LastName}" FontSize="20" TextColor="#333333" FontAttributes="Bold"/>
+                <Label Text="{Binding Email}" FontSize="16" TextColor="#666666" Margin="0,0,0,5"/>
+                <Label Text="{Binding PhoneNumber}" FontSize="16" TextColor="#666666" Margin="0,0,0,5"/>
+
+                <!-- Edit button to navigate to the edit page -->
+                <Button Text="Edit Profile"
+                        BackgroundColor="#9600FF"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Clicked="OnEditClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

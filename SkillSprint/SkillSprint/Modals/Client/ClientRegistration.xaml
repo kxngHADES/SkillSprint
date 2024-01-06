@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SkillSprint.Modals.Client.ClientRegistration"         
+             BackgroundColor="#3C4142 "> <!-- Charcoal gray background -->
+
+    <StackLayout VerticalOptions="CenterAndExpand" Padding="20">
+        <Image Source="User.jpg" HorizontalOptions="Center" HeightRequest="120"/>
+        <Label Text="Register"
+           FontSize="24"
+           HorizontalOptions="CenterAndExpand"
+           TextColor="White"/>
+
+        <Frame BorderColor="White" 
+           BackgroundColor="Transparent"
+           Margin="0,10,0,10"
+           Padding="0"
+           CornerRadius="50">
+            <Entry Placeholder="First Name"
+               FontSize="18"
+               BackgroundColor="Transparent"
+               TextColor="White"
+               HeightRequest="40"
+               x:Name="txtName"/>
+        </Frame>
+
+        <Frame BorderColor="White" 
+           BackgroundColor="Transparent"
+           Margin="0,0,0,10"
+           Padding="0"
+           CornerRadius="50">
+            <Entry Placeholder="Last Name"
+               FontSize="18"
+               BackgroundColor="Transparent"
+               TextColor="White"
+               HeightRequest="40"
+               x:Name="txtLastName"/>
+        </Frame>
+
+        <Frame BorderColor="White" 
+           BackgroundColor="Transparent"
+           Margin="0,0,0,10"
+           Padding="0"
+           CornerRadius="50">
+            <Entry Placeholder="Email"
+               Keyboard="Email"
+               FontSize="18"
+               BackgroundColor="Transparent"
+               TextColor="White"
+               HeightRequest="40"
+               x:Name="txtEmail"/>
+        </Frame>
+
+        <Frame BorderColor="White" 
+           BackgroundColor="Transparent"
+           Margin="0,0,0,10"
+           Padding="0"
+           CornerRadius="50">
+            <Entry Placeholder="Phone Number"
+               FontSize="18"
+               BackgroundColor="Transparent"
+               TextColor="White"
+               HeightRequest="40"
+               x:Name="txtPhone"/>
+        </Frame>
+
+        <Frame BorderColor="White" 
+           BackgroundColor="Transparent"
+           Margin="0,0,0,10"
+           Padding="0"
+           CornerRadius="50">
+            <Entry Placeholder="Password"
+               IsPassword="True"
+               FontSize="18"
+               BackgroundColor="Transparent"
+               TextColor="White"
+               HeightRequest="40"
+               x:Name="txtPassword"/>
+        </Frame>
+
+        <Button Text="Register"
+            Command="{Binding RegisterCommand}"
+            FontSize="18"
+            TextColor="White"
+            BackgroundColor="#9600FF"
+            CornerRadius="50"
+            HeightRequest="60"
+            Margin="0,10,0,0"
+            x:Name="btnRegister"/>
+    </StackLayout>
+</ContentPage>

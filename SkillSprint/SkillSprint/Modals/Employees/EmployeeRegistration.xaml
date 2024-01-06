@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SkillSprint.Modals.Employees.EmployeeRegistration"
+             BackgroundColor="#3C4142">
+
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Profile Picture" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Image Source="{Binding SelectedImagePath}" HeightRequest="200" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                <Button Text="Upload Image" Clicked="OnUploadPictureClicked" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+
+            <!-- Wrapping -->
+            <StackLayout>
+                <Grid RowSpacing="25" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+
+                    <StackLayout Grid.Row="2">
+                        <Frame BorderColor="Black" 
+                            BackgroundColor="Transparent"
+                            Margin="5"
+                            Padding="0"
+                            CornerRadius="50">
+                            <Frame BorderColor="Black" 
+                                BackgroundColor="Transparent"
+                                Margin="1"
+                                Padding="25,0,25,0"
+                                HeightRequest="60"
+                                CornerRadius="50">
+                                
+                                <Entry 
+                                    x:Name="txtFirstName"
+                                    Placeholder="Enter your first name" 
+                                    Margin="0,10,0,0" 
+                                    PlaceholderColor="Black"/>
+                            </Frame>
+                        </Frame>
+
+                        <Frame BorderColor="Black" 
+                            BackgroundColor="Transparent"
+                            Margin="5"
+                            Padding="0"
+                            CornerRadius="50">
+                            <Frame BorderColor="Black" 
+                                BackgroundColor="Transparent"
+                                Margin="1"
+                                Padding="25,0,25,0"
+                                HeightRequest="60"
+                                CornerRadius="50">
+                                
+                                <Entry 
+                                    x:Name="txtLastName"
+                                    Placeholder="Enter your last name" 
+                                    Margin="0,10,0,0" 
+                                    PlaceholderColor="Black"/>
+                            </Frame>
+                        </Frame>
+
+                        <Frame BorderColor="Black" 
+                            BackgroundColor="Transparent"
+                            Margin="5"
+                            Padding="0"
+                            CornerRadius="50">
+                            <Frame BorderColor="Black" 
+                                BackgroundColor="Transparent"
+                                Margin="1"
+                                Padding="25,0,25,0"
+                                HeightRequest="60"
+                                CornerRadius="50">
+                                
+                                <Entry 
+                                    x:Name="txtEmail"
+                                    Placeholder="Enter your email" 
+                                    Margin="0,10,0,0" 
+                                    PlaceholderColor="Black"/>
+                            </Frame>
+                        </Frame>
+
+                        <Frame BorderColor="Black" 
+                            BackgroundColor="Transparent"
+                            Margin="5"
+                            Padding="0"
+                            CornerRadius="50">
+                            <Frame BorderColor="Black" 
+                                BackgroundColor="Transparent"
+                                Margin="1"
+                                Padding="25,0,25,0"
+                                HeightRequest="60"
+                                CornerRadius="50">
+                                
+                                <Entry 
+                                    x:Name="txtPhoneNumber"
+                                    Placeholder="Enter your phone number" 
+                                    Margin="0,10,0,0" 
+                                    PlaceholderColor="Black"/>
+                            </Frame>
+                        </Frame>
+
+                        <Frame BorderColor="Black" 
+                            BackgroundColor="Transparent"
+                            Margin="5"
+                            Padding="0"
+                            CornerRadius="50">
+                            <Frame BorderColor="Black" 
+                                BackgroundColor="Transparent"
+                                Margin="1"
+                                Padding="25,0,25,0"
+                                HeightRequest="60"
+                                CornerRadius="50">
+                                
+                                <Entry 
+                                    x:Name="txtService"
+                                    Placeholder="Enter your service" 
+                                    Margin="0,10,0,0" 
+                                    PlaceholderColor="Black"/>
+                            </Frame>
+                        </Frame>
+
+                        <Frame BorderColor="Black" 
+                            BackgroundColor="Transparent"
+                            Margin="5"
+                            Padding="0"
+                            CornerRadius="50">
+                            <Frame BorderColor="Black" 
+                                BackgroundColor="Transparent"
+                                Margin="1"
+                                Padding="25,0,25,0"
+                                HeightRequest="60"
+                                CornerRadius="50">
+                                
+                                <Entry 
+                                    x:Name="txtPrice"
+                                    Placeholder="Enter your price" 
+                                    Margin="0,10,0,0" 
+                                    PlaceholderColor="Black"/>
+                            </Frame>
+                        </Frame>
+
+                        <Frame BorderColor="Black" 
+                            BackgroundColor="Transparent"
+                            Margin="5"
+                            Padding="0"
+                            CornerRadius="50">
+                            <Frame BorderColor="Black" 
+                                BackgroundColor="Transparent"
+                                Margin="1"
+                                Padding="25,0,25,0"
+                                HeightRequest="60"
+                                CornerRadius="50">
+                                
+                                <Entry 
+                                    x:Name="txtPassword"
+                                    Placeholder="Enter your password" 
+                                    IsPassword="True" 
+                                    Margin="0,10,0,0" 
+                                    PlaceholderColor="Black"/>
+                            </Frame>
+                        </Frame>
+
+                        <Button 
+                            Text="Register" 
+                            TextColor="Blue"
+                            BorderWidth="2"
+                            BorderColor="Blue"
+                            BackgroundColor="White"  
+                            Margin="10,20,10,0" 
+                            CornerRadius="50"
+                            Clicked="OnRegisterClicked"
+                            x:Name="btnRegister"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

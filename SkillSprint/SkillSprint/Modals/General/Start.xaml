@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SkillSprint.Modals.General.Start"
+             BackgroundColor="#3C4142 ">
+
+    <StackLayout x:Name="mainStackLayout" VerticalOptions="CenterAndExpand" Padding="20" Spacing="20">
+        <Label Text="Welcome to SkillSprint"
+               FontSize="30"
+               FontAttributes="Bold"
+               HorizontalOptions="CenterAndExpand"
+               TextColor="White"/>
+
+        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Spacing="20">
+            <Button Text="Client"
+                    x:Name="btnClient"
+                    FontSize="20"
+                    TextColor="White"
+                    BackgroundColor="#3498db"
+                    CornerRadius="10"
+                    WidthRequest="200"
+                    HeightRequest="60"/>
+
+            <Button Text="Employee"
+                    x:Name="btnEmployee"
+                    FontSize="20"
+                    TextColor="White"
+                    BackgroundColor="#2ecc71"
+                    CornerRadius="10"
+                    WidthRequest="200"
+                    HeightRequest="60"/>
+
+            <!-- A secret way to access Administration login -->
+            <Button Text="Admin Login"
+                    x:Name="btnAdminLogin"
+                    FontSize="16"
+                    TextColor="White"
+                    BackgroundColor="#e74c3c"
+                    CornerRadius="8"
+                    WidthRequest="150"
+                    HeightRequest="40"
+                    IsVisible="false">
+                <Button.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Right" Swiped="OnSecretSwipe"/>
+                </Button.GestureRecognizers>
+            </Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
