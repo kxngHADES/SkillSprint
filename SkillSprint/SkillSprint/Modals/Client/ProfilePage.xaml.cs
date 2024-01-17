@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SkillSprint.Database;
+using SkillSprint.Modals.General;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 namespace SkillSprint.Modals.Client
@@ -11,78 +12,29 @@ namespace SkillSprint.Modals.Client
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
+        private readonly DatabaseHelper _database;
+        private readonly int _clientID;
+
         public ProfilePage()
         {
             InitializeComponent();
-            BindingContext = this; // Set the BindingContext to the current instance of ProfilePage
-            UpdateProfile(); // Call the method to update the profile details
+            _database = App.Database;
+            _clientID = App.CurrentClientID;
         }
 
-        private void UpdateProfile()
+        protected override async void OnAppearing()
         {
-            // Check if the current user is a client
-            if (App.CurrentClientID != 0)
-            {
-                var client = App.Database.DisplayClient(App.CurrentClientID).Result; // Use Result to get the client from the Task
-                if (client != null)
-                {
-                    // Set the properties for data binding
-                    FirstName = client.FirstName;
-                    LastName = client.LastName;
-                    Email = client.Email;
-                    PhoneNumber = client.PhoneNumber;
-                }
-            }
-        }
+            base.OnAppearing();
 
-        private string _firstName;
-        public string FirstName
-        {
-            get { return _firstName; }
-            set
-            {
-                _firstName = value;
-                OnPropertyChanged(nameof(FirstName));
-            }
-        }
+            var Client = await _database.GetClientById(_clientID);
 
-        private string _lastName;
-        public string LastName
-        {
-            get { return _lastName; }
-            set
-            {
-                _lastName = value;
-                OnPropertyChanged(nameof(LastName));
-            }
-        }
-
-        private string _email;
-        public string Email
-        {
-            get { return _email; }
-            set
-            {
-                _email = value;
-                OnPropertyChanged(nameof(Email));
-            }
-        }
-
-        private string _phoneNumber;
-        public string PhoneNumber
-        {
-            get { return _phoneNumber; }
-            set
-            {
-                _phoneNumber = value;
-                OnPropertyChanged(nameof(PhoneNumber));
-            }
+            BindingContext = Client;
         }
 
         private async void OnEditClicked(object sender, EventArgs e)
         {
             // Navigate to the edit profile page
-            await Navigation.PushModalAsync(new EditProfilePage());
+            await Navigation.PushModalAsync(new EditProfilePage(App.Database, App.CurrentClientID));
         }
     }
 }

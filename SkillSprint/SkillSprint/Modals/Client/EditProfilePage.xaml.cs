@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkillSprint.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,28 +12,22 @@ namespace SkillSprint.Modals.Client
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditProfilePage : ContentPage
     {
-        public EditProfilePage()
+        private readonly DatabaseHelper _database;
+        private readonly int _clientID;
+        public EditProfilePage(DatabaseHelper database, int ClientID)
         {
             InitializeComponent();
-            BindingContext = this; // Set the BindingContext to the current instance of EditProfilePage
-            LoadProfile(); // Call the method to load the profile details
+            _database = database;
+            _clientID = ClientID;
         }
 
-        private void LoadProfile()
+        protected override async void OnAppearing()
         {
-            // Load the current user's profile for editing
-            if (App.CurrentClientID != 0)
-            {
-                var client = App.Database.DisplayClient(App.CurrentClientID).Result;
-                if (client != null)
-                {
-                    // Set the properties for data binding
-                    FirstName = client.FirstName;
-                    LastName = client.LastName;
-                    Email = client.Email;
-                    PhoneNumber = client.PhoneNumber;
-                }
-            }
+            base.OnAppearing();
+
+            var Client = await _database.GetClientById(_clientID);
+
+            BindingContext = Client;
         }
 
         private string _firstName;

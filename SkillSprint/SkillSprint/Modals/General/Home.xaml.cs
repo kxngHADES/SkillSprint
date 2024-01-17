@@ -4,22 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SkillSprint.Modals.Client;
+using SkillSprint.Renderers;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
 
 namespace SkillSprint.Modals.General
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Home : ContentPage
+    public partial class Home : TabbedPage
     {
         public Home()
         {
             InitializeComponent();
-            BindingContext = this; // Set the BindingContext to the current instance of Home
-            UpdateHeader(); // Call the method to update the header
+
+            this.Children.Add(new ViewEmployee() { Title = "Skills" });
+            this.Children.Add(new ProfilePage() { Title = "Profile" });
+            this.Children.Add(new MessagePage() { Title = "Message" });
+            this.Children.Add(new ContactPage() { Title = "Contact" });
+            //this.Appearing += Home_Appearing;
         }
 
-        private async void UpdateHeader()
+        /*private async void Home_Appearing(object sender, EventArgs e)
+        {
+            // Add a Clicked event handler for the "Profile" tab
+            var profileNavigationPage = this.Children[3] as NavigationPage; // Assuming "Profile" is the second tab
+            var profileTab = profileNavigationPage.CurrentPage;
+            profileTab.ToolbarItems.Add(new ToolbarItem
+            {
+                Text = "Profile",
+                Command = new Command(async () =>
+                {
+                    int clientID = App.CurrentClientID;
+                    var profilePage = new ProfilePage();
+                    await Navigation.PushModalAsync(new NavigationPage(profilePage));
+                })
+            });
+        }*/
+
+        /*private async void UpdateHeader()
         {
             // Check if the current user is a client
             if (App.CurrentClientID != 0)
@@ -49,5 +72,10 @@ namespace SkillSprint.Modals.General
         {
             App.NavProfile();
         }
+
+        private void Service_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new ViewEmployee());
+        }*/
     }
 }

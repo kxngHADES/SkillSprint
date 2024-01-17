@@ -14,15 +14,15 @@
 
             <StackLayout>
                 <!-- Entry fields for editing -->
-                <Entry Text="{Binding FirstName}" Placeholder="First Name" FontSize="16" Margin="0,0,0,5"/>
-                <Entry Text="{Binding LastName}" Placeholder="Last Name" FontSize="16" Margin="0,0,0,5"/>
-                <Entry Text="{Binding Email}" Placeholder="Email" FontSize="16" Margin="0,0,0,5"/>
-                <Entry Text="{Binding PhoneNumber}" Placeholder="Phone Number" FontSize="16" Margin="0,0,0,5"/>
+                <Entry Text="{Binding FirstName}" Placeholder="First Name" PlaceholderColor="Gray" FontSize="16" Margin="0,0,0,5" TextColor="Black" BackgroundColor="White"/>
+                <Entry Text="{Binding LastName}" Placeholder="Last Name" PlaceholderColor="Gray" FontSize="16" Margin="0,0,0,5" TextColor="Black" BackgroundColor="White"/>
+                <Entry Text="{Binding Email}" Placeholder="Email" FontSize="16" Margin="0,0,0,5" TextColor="Black" BackgroundColor="White"/>
+                <Entry Text="{Binding PhoneNumber}" Placeholder="Phone Number" PlaceholderColor="Gray" FontSize="16" Margin="0,0,0,5" TextColor="Black" BackgroundColor="White"/>
 
                 <!-- New Password fields -->
-                <Entry Text="{Binding CurrentPassword}" Placeholder="Current Password" IsPassword="True" FontSize="16" Margin="0,0,0,5"/>
-                <Entry Text="{Binding NewPassword}" Placeholder="New Password" IsPassword="True" FontSize="16" Margin="0,0,0,5"/>
-                <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm New Password" IsPassword="True" FontSize="16" Margin="0,0,0,5"/>
+                <Entry Text="{Binding CurrentPassword}" Placeholder="Current Password" PlaceholderColor="Gray" IsPassword="True" FontSize="16" Margin="0,0,0,5" TextColor="Black" BackgroundColor="White"/>
+                <Entry Text="{Binding NewPassword}" Placeholder="New Password" PlaceholderColor="Gray" IsPassword="True" FontSize="16" Margin="0,0,0,5" TextColor="Black" BackgroundColor="White"/>
+                <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm New Password" PlaceholderColor="Gray" IsPassword="True" FontSize="16" Margin="0,0,0,5" TextColor="Black" BackgroundColor="White"/>
 
                 <!-- Save button to save changes -->
                 <Button Text="Save Changes"

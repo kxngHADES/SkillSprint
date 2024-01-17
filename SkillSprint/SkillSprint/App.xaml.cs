@@ -40,9 +40,9 @@ namespace SkillSprint
         {
         }
 
-        public static void NavigateToMainPage()
+        public static async void NavigateToMainPage()
         {
-            Current.MainPage = new NavigationPage(new Home());
+            //
         }
 
         public static void NavAdmin()
@@ -52,7 +52,7 @@ namespace SkillSprint
 
         public static void NavProfile()
         {
-            Current.MainPage = new NavigationPage(new ProfilePage());
+            //Current.MainPage = new NavigationPage(new ProfilePage(Database, CurrentClientID));
         }
     }
 }

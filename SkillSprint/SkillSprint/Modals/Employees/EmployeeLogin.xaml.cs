@@ -35,7 +35,7 @@ namespace SkillSprint.Modals.Employees
 
                     await DisplayAlert("Success", "Login successful!", "OK");
                     // Navigate to the main page or any other page as needed
-                    await Navigation.PushModalAsync(new EmployeeProfile());
+                    await Navigation.PushModalAsync(new EmployeeProfile(App.Database, employee.EmployeeID));
                 }
                 else
                 {

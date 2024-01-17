@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SkillSprint.Modals.General.EmplyeeDetails">
+    <StackLayout Padding="20" VerticalOptions="CenterAndExpand">
+        <Image Source="{Binding ImagePath}" HeightRequest="200" Aspect="AspectFill" VerticalOptions="Center"/>
+        <Label Text="{Binding FirstName}" FontSize="20" FontAttributes="Bold"/>
+        <Label Text="{Binding LastName}" FontSize="20" FontAttributes="Bold"/>
+        <Label Text="{Binding Service}" FontSize="25" TextColor="#9600FF"/>
+
+        <Button Text="Back"
+                BackgroundColor="#9600FF"
+                TextColor="White"
+                CornerRadius="20"
+                Clicked="OnReturn_Clicked"
+                Margin="0,20,0,0"/>
+
+    </StackLayout>
+</ContentPage>

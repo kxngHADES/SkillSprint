@@ -4,13 +4,13 @@
              x:Class="SkillSprint.Modals.General.ViewEmployee">
 
     <ContentPage.Content>
-        <StackLayout Padding="20" BackgroundColor="#F4F4F4">
-            <SearchBar x:Name="searchBar"
-                       Placeholder="Search Employees"
-                       SearchCommand="{Binding SearchCommand}"
-                       SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
-                       Margin="0,0,0,10"/>
-            <Label Text="All Employees"
+        <StackLayout Padding="20" BackgroundColor="#333333">
+           <SearchBar x:Name="searchBar"
+           Placeholder="Search Service"
+           SearchCommand="{Binding SearchCommand}"
+           SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
+           Margin="0,0,0,10"/>
+            <Label Text="All Skilled Labors"
                    FontSize="25"
                    TextColor="#333333"
                    HorizontalTextAlignment="Center"
@@ -57,6 +57,12 @@
                                        FontSize="16"
                                        TextColor="#666666"
                                        Margin="0,0,0,5"/>
+                                <Button Text="View Details"
+                                        BackgroundColor="#9600FF"
+                                        TextColor="White"
+                                        CornerRadius="10"
+                                        Clicked="OnViewDetailsClicked"
+                                        CommandParameter="{Binding EmployeeID}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

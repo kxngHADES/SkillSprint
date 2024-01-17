@@ -5,42 +5,44 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using static SkillSprint.Database.Users;
+using System;
 
 namespace SkillSprint.Modals.General
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewEmployee : ContentPage
     {
-        private readonly DatabaseHelper _databaseHelper;
-        public ObservableCollection<Employee> Employees { get; set; }
-
-        public ICommand SearchCommand => new Command<string>(PerformSearch);
+        private ObservableCollection<Employee> Employees { get; set; }
 
         public ViewEmployee()
         {
             InitializeComponent();
 
-            // Use an instance of App to access DatabasePath
-            _databaseHelper = new DatabaseHelper(App.Database.DatabasePath);
-            Employees = new ObservableCollection<Employee>();
-            employeeListView.ItemsSource = Employees;
-
-            LoadEmployees();
         }
 
-        private async void LoadEmployees()
+        protected override async void OnAppearing()
         {
-            var employees = await _databaseHelper.GetAllEmployees();
-            Employees.Clear();
-            foreach (var employee in employees)
+            base.OnAppearing();
+
+            var allEmployeesTask = App.Database.GetAllEmployees();
+
+            var allEmployees = await allEmployeesTask;
+            Employees = new ObservableCollection<Employee>();
+            employeeListView.ItemsSource = allEmployees.ToList();
+        }
+
+        private void OnViewDetailsClicked(object sender, EventArgs eventArgs)
+        {
+            if (sender is Button btn && btn.CommandParameter is int EmployeeID)
             {
-                Employees.Add(employee);
+                Navigation.PushModalAsync(new EmplyeeDetails(App.Database, EmployeeID));
             }
         }
 
+        
         private async void PerformSearch(string query)
         {
-            var filteredEmployees = await _databaseHelper.GetAllEmployees();
+            var filteredEmployees = await App.Database.GetAllEmployees();
 
             if (!string.IsNullOrWhiteSpace(query))
             {
@@ -57,5 +59,8 @@ namespace SkillSprint.Modals.General
                 Employees.Add(employee);
             }
         }
+
+
+
     }
 }

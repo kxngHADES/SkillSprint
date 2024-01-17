@@ -142,8 +142,10 @@ namespace SkillSprint.Modals.Employees
             if (mediaResult != null)
             {
                 SelectedImagePath = mediaResult.FullPath;
-                // You can display the selected image or perform further actions
+                // Display the selected image in the Image control
+                imgProfile.Source = ImageSource.FromFile(SelectedImagePath);
             }
         }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,12 @@ namespace SkillSprint.Database
             await database.UpdateAsync(client);
         }
 
+        //Get employee
+        public async Task<Client> GetClientById(int ClientID)
+        {
+            return await database.Table<Client>().FirstOrDefaultAsync(x => x.ClientID == ClientID);
+        }
+
         #endregion
 
         //Employee
@@ -102,6 +109,11 @@ namespace SkillSprint.Database
         }
         #endregion
 
+        public async Task<Employee> GetEmployeeById(int EmployeeID)
+        {
+            return await database.Table<Employee>().FirstOrDefaultAsync(z => z.EmployeeID == EmployeeID);
+        }
+
         #region Admin
         //Admin Login
         public async Task<Administration> AdminLogin(string password, int adminID)
@@ -110,5 +122,15 @@ namespace SkillSprint.Database
         }
         #endregion
 
+
+        #region SQLs
+        public async Task<List<Employee>> ServiceSearch(string Service)
+        {
+            string query = $"SELECT * FROM Employee WHERE Service = ?";
+            var result = await database.QueryAsync<Employee>(query, Service);
+
+            return result.ToList();
+        }
+        #endregion
     }
 }

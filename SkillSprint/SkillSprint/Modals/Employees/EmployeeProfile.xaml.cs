@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SkillSprint;
+using SkillSprint.Database;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,30 +15,22 @@ namespace SkillSprint.Modals.Employees
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EmployeeProfile : ContentPage
     {
-        public EmployeeProfile()
+        private readonly DatabaseHelper _database;
+        private readonly int _EmployeeID;
+        public EmployeeProfile(DatabaseHelper database, int EmployeeID)
         {
             InitializeComponent();
-            Employee = new Employee();
-            LoadEmployeeDetails();
+            _database = database;
+            _EmployeeID = EmployeeID;
         }
 
-        private async void LoadEmployeeDetails()
+        protected override async void OnAppearing()
         {
-            // Check if an employee is currently logged in
-            if (App.CurrentEmployeeID != 0)
-            {
-                // Retrieve the employee details from the database
-                var employee = App.Database.DisplayEmployee(App.CurrentEmployeeID).Result;
+            base.OnAppearing();
 
-                if (employee != null)
-                {
-                    // Set the BindingContext to the current instance of EmployeeProfile
-                    BindingContext = this;
+            var Employee = await _database.GetEmployeeById(_EmployeeID);
 
-                    // Set the properties for data binding
-                    Employee = employee;
-                }
-            }
+            BindingContext = Employee;
         }
 
         private Employee _employee;
@@ -83,6 +76,12 @@ namespace SkillSprint.Modals.Employees
         {
             try
             {
+                // Ensure the Employee instance is initialized
+                if (Employee == null)
+                {
+                    return;
+                }
+
                 // Open the MediaPicker to select an image
                 var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
                 {
@@ -97,8 +96,15 @@ namespace SkillSprint.Modals.Employees
                     // Update the employee's profile picture path in the database
                     await App.Database.UpdateEmployee(Employee);
 
+                    // Update the binding context to reflect the changes
+                    BindingContext = null;
+                    BindingContext = Employee;
+
                     // Display success message
                     await DisplayAlert("Success", "Profile picture updated successfully", "OK");
+
+                    // Update image preview
+                    imgPreview.Source = result.FullPath;
                 }
             }
             catch (Exception ex)
@@ -107,6 +113,8 @@ namespace SkillSprint.Modals.Employees
                 await DisplayAlert("Error", $"Error selecting image: {ex.Message}", "OK");
             }
         }
+
+
     }
 }
 

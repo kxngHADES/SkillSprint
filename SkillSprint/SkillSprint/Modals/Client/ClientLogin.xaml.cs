@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkillSprint.Modals.General;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace SkillSprint.Modals.Client
             if (client != null)
             {
                 App.CurrentClientID = client.ClientID;
-                App.NavigateToMainPage();
+                await Navigation.PushModalAsync(new Home());
             }
             else
             {
